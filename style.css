@@ -21,8 +21,8 @@ body {
 
   background-color: var(--color-violet);
   background-image: url("images/bg-mobile.svg");
-  /* background-size: cover; */
-  background-size: 100%;
+  background-size: cover;
+/*   background-size: 100%; */
   background-repeat: no-repeat;
 
   font-family: "Open Sans", serif;
