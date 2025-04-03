@@ -1,0 +1,172 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-violet: #674baf;
+  --color-magenta: #e882e8;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px 50px;
+  margin: 0;
+
+  box-sizing: border-box;
+
+  background-color: var(--color-violet);
+  background-image: url("images/bg-mobile.svg");
+  /* background-size: cover; */
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  font-family: "Open Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-white);
+  font-variation-settings:
+    "wdth" 100;
+}
+
+
+
+/* footer {
+  margin-top: auto;
+} */
+
+
+/* Hello Wojciech! 😘 */
+
+.poppins-regular {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-white);
+}
+
+.poppins-semibold {
+  font-family: "Poppins", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: var(--color-white);
+}
+
+header > img {
+  display: block;
+  max-width: 40%;
+}
+
+.main-img {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.main-img > img {
+  display: block;
+  max-width: 100%;
+  max-height: 209px;
+  margin-inline: auto;
+}
+
+/* #register-button {
+  display: block;
+  text-align: center;
+  margin: 0 8rem;
+  height: 3rem;
+  background-color: var(--color-white);
+  color: #674baf;
+  border-radius: 10px;
+} */
+
+
+.cta-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+}
+
+.button-container a {
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+  padding: 12px;
+  height: 17px;
+  width: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-white);
+}
+.button-container a:hover {
+  color: var(--color-magenta);
+  border-color: var(--color-magenta);
+}
+
+#register-button {
+  all: unset;
+  display: inline-block;
+  padding: 12px 75px;
+  background-color: var(--color-white);
+  color: var(--color-violet);
+  border-radius: 20px;
+  box-shadow: 1px 3px 5px 0 rgba(0, 0, 0, 0.269);
+  transition: color 1s, background-color 1s;
+}
+
+#register-button:hover {
+  background-color: var(--color-magenta);
+  color: var(--color-white);
+  
+}
+
+@media (min-aspect-ratio: 1/1) {
+  body {
+    background-image: url("images/bg-desktop.svg");
+  }
+}
+
+@media (min-width: 1200px) {
+  h2 {
+    font-size: 40px;
+  }
+  main {
+    display: flex;
+  }
+  .main-img > img{
+    max-width: unset;
+    max-height: unset;
+    
+  }
+  
+  .main-text {
+    padding: 30px;
+    max-width: 50%;
+  }
+  
+  .cta-container {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* .button-container a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+}
