@@ -6,7 +6,7 @@ import cssVars from "../styles/css-vars";
 
 <nav>
   <div class="logo">
-    <a href="/"><img /></a>
+    <a href="/"><div></div></a>
   </div>
   <button class="burger" aria-label="Open full-screen navigation">
     <div class="bgrOpn">
@@ -52,23 +52,18 @@ import cssVars from "../styles/css-vars";
     position: fixed;
     top: 0;
     width: 100%;
+    height: 100px;
     background-color: var(--colorWhite);
     z-index: 100000;
     /* transition: all 0.3s ease; */
   }
 
-  .logo {
-    padding: 35px 25px 28px 25px;
-  }
-
-  .logo a img {
+  .logo a div {
     background-image: url("/src/assets/shared/desktop/logo-dark.png");
     background-size: cover;
-  }
-
-  nav div img {
     width: 202px;
     height: 24px;
+    margin-top: 35px;
   }
 
   .nav-content {
@@ -116,7 +111,7 @@ import cssVars from "../styles/css-vars";
 
   @media (min-width: 600px) and (max-width: 900px) {
     .logo {
-      padding-left: 5%;
+      padding-left: 3%;
     }
 
     nav {
@@ -127,7 +122,7 @@ import cssVars from "../styles/css-vars";
       display: flex;
       align-items: center;
       gap: 30px;
-      padding-right: 5%;
+      padding-right: 3%;
       height: auto;
     }
 
