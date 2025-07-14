@@ -5,12 +5,7 @@ import cssVars from "../styles/css-vars";
 <footer>
   <div class="footer-first-line">
     <div class="logo">
-      <a href="/"
-        ><img
-          src="./src/assets/shared/desktop/logo-light.png"
-          alt="Designo"
-        /></a
-      >
+      <a href="/"><div></div></a>
     </div>
     <div class="footer-links">
       <a href="/about">OUR&nbsp;COMPANY</a>
@@ -30,21 +25,13 @@ import cssVars from "../styles/css-vars";
       <p>M : contact@designo.co</p>
     </div>
     <div class="footer-icons">
-      <a href="#facebook"
-        ><img src="/src/assets/shared/desktop/icon-facebook.svg" /></a
-      >
-      <a href="#youtube"
-        ><img src="/src/assets/shared/desktop/icon-youtube.svg" /></a
-      >
-      <a href="#twitter"
-        ><img src="/src/assets/shared/desktop/icon-twitter.svg" /></a
-      >
-      <a href="#pinterest"
-        ><img src="/src/assets/shared/desktop/icon-pinterest.svg" /></a
-      >
-      <a href="#instagram"
-        ><img src="/src/assets/shared/desktop/icon-instagram.svg" /></a
-      >
+      <a href="#facebook">
+        <div class="facebook"></div>
+      </a>
+      <a href="#youtube"><div class="youtube"></div></a>
+      <a href="#twitter"><div class="twitter"></div></a>
+      <a href="#pinterest"><div class="pinterest"></div></a>
+      <a href="#instagram"><div class="instagram"></div></a>
     </div>
   </div>
 </footer>
@@ -74,6 +61,14 @@ import cssVars from "../styles/css-vars";
   footer .footer-first-line .logo img {
     width: 60%;
     margin-top: 64px;
+  }
+
+  footer .footer-first-line .logo a div {
+    background-image: url("./src/assets/shared/desktop/logo-light.png");
+    background-size: cover;
+    width: 202px;
+    height: 24px;
+    margin-top: 35px;
   }
 
   footer .footer-links {
@@ -113,6 +108,31 @@ import cssVars from "../styles/css-vars";
     gap: 16px;
   }
 
+  footer .footer-icons a div {
+    background-size: cover;
+    width: 24px;
+    height: 24px;
+  }
+  footer .footer-icons a .facebook {
+    background-image: url("/src/assets/shared/desktop/icon-facebook.svg");
+  }
+
+  footer .footer-icons a .youtube {
+    background-image: url("/src/assets/shared/desktop/icon-youtube.svg");
+  }
+
+  footer .footer-icons a .twitter {
+    background-image: url("/src/assets/shared/desktop/icon-twitter.svg");
+  }
+
+  footer .footer-icons a .pinterest {
+    background-image: url("/src/assets/shared/desktop/icon-pinterest.svg");
+  }
+
+  footer .footer-icons a .instagram {
+    background-image: url("/src/assets/shared/desktop/icon-instagram.svg");
+  }
+
   .footer-icons a {
     height: 24px;
   }
@@ -142,13 +162,14 @@ import cssVars from "../styles/css-vars";
 
     footer .footer-links {
       flex-direction: row;
-      justify-content: center;
+      justify-content: right;
       align-items: center;
+      gap: 5%;
       padding-right: 3%;
     }
 
     footer .footer-links a {
-      padding-left: 40px;
+      /* padding-left: 40px; */
       padding-bottom: 0;
     }
 
