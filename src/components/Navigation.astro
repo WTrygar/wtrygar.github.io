@@ -6,7 +6,7 @@ import cssVars from "../styles/css-vars";
 
 <nav>
   <div class="logo">
-    <a href="/"><img src="_astro/logo-dark.png" alt="Designo" /></a>
+    <a href="/"><img /></a>
   </div>
   <button class="burger" aria-label="Open full-screen navigation">
     <div class="bgrOpn">
@@ -59,6 +59,11 @@ import cssVars from "../styles/css-vars";
 
   .logo {
     padding: 35px 25px 28px 25px;
+  }
+
+  .logo a img {
+    background-image: url(./src/assets/shared/desktop/logo-dark.png);
+    background-size: cover;
   }
 
   nav div img {
