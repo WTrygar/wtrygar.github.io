@@ -1,0 +1,231 @@
+---
+// components imports
+import Button from "../components/Button.astro";
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import HomePageHero from "../components/HomePageHero.astro";
+import Navigation from "../components/Navigation.astro";
+import NavigationCard from "../components/NavigationCard.astro";
+import Layout from "../layouts/Layout.astro";
+
+// navigation cards images imports
+import app_design from "/src/assets/home/desktop/image-app-design.jpg";
+import graphic_design from "/src/assets/home/desktop/image-graphic-design.jpg";
+import web_design_small from "/src/assets/home/desktop/image-web-design-small.jpg";
+
+// cards images imports
+import illustration_friendly from "/src/assets/home/desktop/illustration-friendly.svg";
+import illustration_passionate from "/src/assets/home/desktop/illustration-passionate.svg";
+import illustration_resourceful from "/src/assets/home/desktop/illustration-resourceful.svg";
+
+const navigationCards = [
+  {
+    className: "one",
+    name: "WEB DESIGN",
+    path: "/image-web-design-small",
+    btnlink: "/web-design",
+    img: web_design_small,
+  },
+  {
+    className: "two",
+    name: "APP DESIGN",
+    path: "/image-app-design",
+    btnlink: "/app-design",
+    img: app_design,
+  },
+  {
+    className: "three",
+    name: "GRAPHIC DESIGN",
+    path: "/image-graphic-design",
+    btnlink: "/graphic-design",
+    img: graphic_design,
+  },
+] as const;
+
+const cards = [
+  {
+    className: "first-card",
+    name: "PASSIONATE",
+    path: "/illustration-passionate",
+    img: illustration_passionate,
+    text: "Each project starts with an in-depth brand research to ensure we only create products that serve a purpose. We merge art, design, and technology into exciting new solutions.",
+  },
+  {
+    className: "second-card",
+    name: "RESOURCEFUL",
+    path: "/illustration-resourceful",
+    img: illustration_resourceful,
+    text: "Everything that we do has a strategic purpose. We use an agile approach in all of our projects and value customer collaboration. It guarantees superior results that fulfill our clients’ needs.",
+  },
+  {
+    className: "third-card",
+    name: "FRIENDLY",
+    path: "/illustration-friendly",
+    img: illustration_friendly,
+    text: " We are a group of enthusiastic folks who know how to put people first. Our success depends on our customers, and we strive to give them the best experience a company can provide.",
+  },
+];
+
+// ❌ var zmienna;
+// const stala;
+// let fancyZmienna;
+
+// const type1 = {
+//   test: "123"
+// } as const;
+
+// const type2 = {
+//   test: "987"
+// };
+
+// Think: BIG PICTURE
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+  <Navigation />
+  <HomePageHero>
+    <a style="text-decoration:none" href="/about"><Button>LEARN MORE</Button></a
+    >
+  </HomePageHero>
+  <div class="navigation-cards">
+    {
+      navigationCards.map((i) => (
+        <NavigationCard
+          class={i.className}
+          title={i.name}
+          imageUrl={i.path}
+          img={i.img.src}
+          buttonUrl={i.btnlink}
+        />
+      ))
+    }
+  </div>
+  <!-- <div class="navigation-cards">
+    {
+      navigationCards.map((i) => (
+        <NavigationCard
+          class={i.className}
+          title={i.name}
+          buttonUrl="#"
+        >
+          <Picture 
+            src="link/to/your/source" 
+            srcset={} 
+          />
+        </NavigationCard>
+      ))
+    }
+  </div> -->
+  <div class="cards">
+    {
+      cards.map((i) => (
+        <Card
+          class={i.className}
+          title={i.name}
+          imageUrl={i.path}
+          img={i.img.src}
+          text={i.text}
+        />
+      ))
+    }
+  </div>
+
+  <GetInTouch
+    ><a style="text-decoration:none" href="/contact"
+      ><Button>GET IN TOUCH</Button></a
+    ></GetInTouch
+  >
+
+  <Footer />
+</Layout>
+
+<style>
+  body {
+    background-color: white;
+    /* padding-top: 300px; */
+    display: flex;
+    min-height: 300vh;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+
+    background-image: url(./src/assets/shared/desktop/bg-pattern-small-circle.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  /* navigation cards */
+
+  .navigation-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 890px;
+  }
+
+  .one,
+  .two,
+  .three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* cards */
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-bottom: 300px;
+  }
+
+  .cards .first-card,
+  .cards .second-card,
+  .cards .third-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .navigation-cards {
+      margin-top: 850px;
+      width: 95%;
+    }
+
+    .cards {
+      margin-bottom: 250px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .navigation-cards {
+      width: 80%;
+      display: grid;
+      justify-content: normal;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      margin-top: 800px;
+    }
+
+    .cards {
+      flex-direction: row;
+      gap: 50px;
+      width: 80%;
+    }
+  }
+</style>

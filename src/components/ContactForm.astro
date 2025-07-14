@@ -1,0 +1,127 @@
+---
+import cssVars from "../styles/css-vars";
+---
+
+<div class="contact-form">
+  <div class="contact-form-text">
+    <h2>Contact Us</h2>
+    <p>
+      Ready to take it to the next level? Let’s talk about your project or idea
+      and find out how we can help your business grow. If you are looking for
+      unique digital experiences that’s relatable to your users, drop us a line.
+    </p>
+  </div>
+  <form>
+    <label>
+      <input type="text" name="name" placeholder="Name" />
+    </label>
+    <label>
+      <input type="email" name="email" placeholder="Email Address" />
+    </label>
+    <label>
+      <input type="tel" name="phone" placeholder="Phone" />
+    </label>
+    <label>
+      <textarea name="message" placeholder="Your Message"></textarea>
+    </label>
+    <slot />
+  </form>
+</div>
+
+<style define:vars={cssVars}>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--colorPeach);
+    background-image: url(./src/assets/shared/desktop/bg-pattern-small-circle.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    max-height: fit-content;
+    color: var(--colorWhite);
+    padding: 70px 0;
+  }
+
+  .contact-form .contact-form-text {
+    width: 90%;
+    text-align: center;
+    min-height: 100%;
+  }
+
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .contact-form form:last-child {
+  }
+
+  .contact-form form label {
+    display: block;
+    text-align: center;
+    width: 90%;
+    line-height: 200%;
+  }
+  .contact-form form label input {
+    width: 100%;
+    height: 4rem;
+    background-color: var(--colorPeach);
+    border: none;
+    border-bottom: 1px solid white;
+  }
+  .contact-form form label input::placeholder,
+  textarea::placeholder {
+    color: var(--colorWhite);
+  }
+
+  .contact-form form label textarea {
+    width: 100%;
+    height: 8rem;
+    background-color: var(--colorPeach);
+    border: none;
+    border-bottom: 1px solid white;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .contact-form {
+      width: 90%;
+      border-radius: 25px;
+      align-items: flex-start;
+    }
+
+    .contact-form .contact-form-text {
+      text-align: left;
+      padding-left: 10%;
+    }
+
+    .contact-form form label {
+      width: 80%;
+    }
+  }
+  @media (min-width: 900px) {
+    .contact-form {
+      flex-direction: row;
+      border-radius: 25px;
+      width: 80%;
+    }
+
+    .contact-form .contact-form-text {
+      text-align: left;
+      padding-left: 5%;
+    }
+
+    .contact-form form {
+      align-items: flex-end;
+      padding-right: 5%;
+    }
+
+    .contact-form form label {
+      width: 80%;
+    }
+  }
+</style>

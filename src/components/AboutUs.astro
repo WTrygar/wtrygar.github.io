@@ -1,0 +1,144 @@
+---
+import cssVars from "../styles/css-vars";
+
+interface Props {
+  secondary?: boolean;
+  tertiary?: boolean;
+}
+
+const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
+---
+
+<div class:list={["about", { secondary: isSecondary, tertiary: isTertiary }]}>
+  <div class="about-image"></div>
+  <div class="about-text">
+    <slot name="about-header" />
+    <slot name="about-paragraph" />
+  </div>
+</div>
+
+<style define:vars={cssVars}>
+  /* default */
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--colorPeach);
+    background-image: url(./src/assets/shared/desktop/bg-pattern-small-circle.svg);
+    background-size: cover;
+    color: var(--colorWhite);
+  }
+
+  .about .about-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 70px 0;
+  }
+
+  .about .about-image {
+    background-image: url("./src/assets/about/mobile/image-about-hero.jpg");
+    background-size: cover;
+    height: 25rem;
+    width: 100%;
+  }
+
+  /* secondary */
+  .secondary {
+    /* flex-direction: column-reverse; */
+    background-color: #fdf3f0;
+    color: var(--colorBlack);
+  }
+  .secondary .about-image {
+    background-image: url("./src/assets/about/mobile/image-world-class-talent.jpg");
+  }
+
+  .secondary .about-text .about-header {
+    color: #ffad9b;
+  }
+
+  /* tertiary */
+  .tertiary {
+    background-color: #fdf3f0;
+    color: var(--colorBlack);
+  }
+
+  .tertiary .about-image {
+    background-image: url("./src/assets/about/mobile/image-real-deal.jpg");
+  }
+  @media (min-width: 600px) and (max-width: 900px) {
+    /* default */
+    .about {
+      width: 90%;
+      border-radius: 25px;
+      margin: 50px 0;
+    }
+
+    .about .about-text {
+      padding: 50px 0;
+    }
+
+    .about .about-image {
+      background-image: url("./src/assets/about/tablet/image-about-hero.jpg");
+      background-size: cover;
+      height: 23rem;
+      width: 100%;
+      border-radius: 25px 25px 0 0;
+    }
+
+    /* secondary */
+    .secondary .about-image {
+      background-image: url("./src/assets/about/tablet/image-world-class-talent.jpg");
+    }
+
+    /* tertiary */
+    .tertiary .about-image {
+      background-image: url("./src/assets/about/tablet/image-real-deal.jpg");
+    }
+  }
+
+  @media (min-width: 900px) {
+    /* default */
+
+    .about {
+      flex-direction: row-reverse;
+      justify-content: center;
+      width: 80%;
+      border-radius: 25px;
+      margin: 50px 0;
+    }
+
+    .about .about-text {
+      text-align: left;
+      width: 100%;
+      /* padding: 50px 100px; */
+    }
+    .about .about-image {
+      background-image: url("./src/assets/about/desktop/image-about-hero.jpg");
+      background-size: cover;
+      height: 50rem;
+      min-width: 350px;
+      width: 70%;
+      border-radius: 0 25px 25px 0;
+    }
+
+    /* secondary */
+    .secondary {
+      flex-direction: row;
+    }
+
+    .secondary .about-image {
+      background-image: url("./src/assets/about/desktop/image-world-class-talent.jpg");
+      border-radius: 25px 0 0 25px;
+    }
+
+    /* tertiary */
+    .tertiary .about-image {
+      background-image: url("./src/assets/about/desktop/image-real-deal.jpg");
+    }
+  }
+</style>

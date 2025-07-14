@@ -1,0 +1,104 @@
+---
+import cssVars from "../styles/css-vars";
+
+interface Props {
+  class: string;
+  title: string;
+  text: string;
+  imageUrl: string;
+  img: string;
+} 
+
+const { class: className, title, text, imageUrl, img } = Astro.props;
+---
+
+<div class="project-card">
+  <img src={img} class="project-card-image" alt="project-card-image" />
+  <div class="project-card-content">
+    <h3 class="project-card-title">{title}</h3>
+    <p class="project-card-text">{text}</p>
+  </div>
+</div>
+
+<style define:vars={{ cssVars, image: `url("${img}")` }}>
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    background-color: #fdf3f0;
+    border-radius: 25px;
+    margin: 10px 0;
+    transition: 0.3s;
+  }
+
+  .project-card:hover {
+    background-color: #e7816b;
+    color: white;
+  }
+
+  .project-card:hover .project-card-content .project-card-title {
+    color: white;
+  }
+
+  .project-card .project-card-image {
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+  }
+
+  .project-card .project-card-content {
+    width: 100%;
+
+    border-radius: 0 0 25px 25px;
+  }
+
+  .project-card .project-card-content .project-card-title {
+    color: #ffad9b;
+  }
+  .project-card .project-card-content .project-card-text {
+    width: 70%;
+    margin: auto;
+    padding-bottom: 30px;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .project-card {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    .project-card .project-card-image {
+      width: 50%;
+      border-radius: 25px 0 0 25px;
+      min-height: 365px;
+    }
+
+    .project-card .project-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #fdf3f0;
+      border-radius: 0 25px 25px 0;
+      min-height: 365px;
+      /* padding: 78px 0; */
+    }
+
+    .project-card .project-card-content .project-card-text {
+      margin: 0;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .project-card {
+      width: 32%;
+    }
+
+    .project-card .project-card-content {
+      height: 150px;
+    }
+  }
+</style>

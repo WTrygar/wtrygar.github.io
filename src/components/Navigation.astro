@@ -1,0 +1,207 @@
+---
+import burgerClosed from "../assets/shared/mobile/icon-close.svg?raw";
+import burgerOpen from "../assets/shared/mobile/icon-hamburger.svg?raw";
+import cssVars from "../styles/css-vars";
+---
+
+<nav>
+  <div class="logo">
+    <a href="/"
+      ><img src="./src/assets/shared/desktop/logo-dark.png" alt="Designo" /></a
+    >
+  </div>
+  <button class="burger" aria-label="Open full-screen navigation">
+    <div class="bgrOpn">
+      <Fragment set:html={burgerOpen} />
+    </div>
+    <div class="bgrCld">
+      <Fragment set:html={burgerClosed} />
+    </div>
+  </button>
+  <div class="nav-content">
+    <a href="/about">OUR COMPANY</a>
+    <a href="/locations">LOCATIONS</a>
+    <a href="/contact">CONTACT</a>
+  </div>
+</nav>
+<script>
+  function attachListeners() {
+    const brg = document.querySelector(".burger");
+    const brgClasses = brg?.classList;
+
+    const nav = document.querySelector(".nav-content");
+    const navClasses = nav?.classList;
+
+    brg?.addEventListener("click", () => {
+      const result = brgClasses?.toggle("open");
+    });
+
+    brg?.addEventListener("click", () => {
+      const result = navClasses?.toggle("open");
+    });
+  }
+
+  document.addEventListener("astro:page-load", attachListeners);
+</script>
+
+<style define:vars={cssVars}>
+  /* navBar */
+  nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--colorWhite);
+    z-index: 100000;
+    /* transition: all 0.3s ease; */
+  }
+
+  .logo {
+    padding: 35px 25px 28px 25px;
+  }
+
+  nav div img {
+    width: 202px;
+    height: 24px;
+  }
+
+  .nav-content {
+    all: unset;
+    display: none;
+  }
+
+  .nav-content.open {
+    display: flex;
+    flex-direction: column;
+    max-height: 10000px;
+  }
+
+  .nav-content.open a {
+    display: block;
+    background-color: var(--colorBlack);
+    color: var(--colorWhite);
+    text-decoration: none;
+    padding: 16px 24px;
+    height: 50px;
+  }
+  /* end navBar */
+
+  /* Burger */
+  .burger {
+    all: unset;
+    padding: 15px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+  }
+
+  .burger > .bgrCld {
+    display: none;
+  }
+
+  .burger.open > .bgrCld {
+    display: initial;
+  }
+
+  .burger.open > .bgrOpn {
+    display: none;
+  }
+  /* End: Burger */
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .logo {
+      padding-left: 5%;
+    }
+
+    nav {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .nav-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding-right: 5%;
+      height: auto;
+    }
+
+    .nav-content a {
+      color: var(--colorBlack);
+      text-decoration: none;
+    }
+
+    .nav-content.open {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+      padding-right: 0;
+    }
+
+    .nav-content.open a {
+      display: flex;
+      text-decoration: none;
+      height: auto;
+      padding: 20px 13px;
+      gap: 30px;
+      color: var(--colorBlack);
+      background-color: var(--colorWhite);
+    }
+
+    .burger {
+      display: none;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .logo {
+      padding-left: 10%;
+    }
+
+    nav {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .nav-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding-right: 10%;
+      height: auto;
+    }
+
+    .nav-content a {
+      color: var(--colorBlack);
+      text-decoration: none;
+    }
+
+    .nav-content a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-content.open {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+      padding-right: 0;
+    }
+
+    .nav-content.open a {
+      display: flex;
+      text-decoration: none;
+      height: auto;
+      padding: 20px 13px;
+      gap: 30px;
+      color: var(--colorBlack);
+      background-color: var(--colorWhite);
+    }
+
+    .burger {
+      display: none;
+    }
+  }
+</style>

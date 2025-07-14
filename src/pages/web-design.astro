@@ -1,0 +1,223 @@
+---
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import Navigation from "../components/Navigation.astro";
+import NavigationCard from "../components/NavigationCard.astro";
+import PageHero from "../components/PageHero.astro";
+import Layout from "../layouts/Layout.astro";
+
+// navigation cards images import
+import app_design from "/src/assets/home/desktop/image-app-design.jpg";
+import graphic_design from "/src/assets/home/desktop/image-graphic-design.jpg";
+
+// project card images imports
+import ProjectCard from "../components/ProjectCard.astro";
+import image_blogr from "/src/assets/web-design/desktop/image-blogr.jpg";
+import image_builder from "/src/assets/web-design/desktop/image-builder.jpg";
+import image_camp from "/src/assets/web-design/desktop/image-camp.jpg";
+import image_express from "/src/assets/web-design/desktop/image-express.jpg";
+import image_photon from "/src/assets/web-design/desktop/image-photon.jpg";
+import image_transfer from "/src/assets/web-design/desktop/image-transfer.jpg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const projectCards = [
+  {
+    className: "one",
+    name: "EXPRESS",
+    text: "A multi-carrier shipping website for ecommerce businesses",
+    path: "/image-express",
+    img: image_express,
+  },
+  {
+    className: "two",
+    name: "TRANSFER",
+    text: "Site for low-cost money transfers and sending money within seconds",
+    path: "/image-transfer",
+    img: image_transfer,
+  },
+  {
+    className: "three",
+    name: "PHOTON",
+    text: "A state-of-the-art music player with high-resolution audio and DSP effects",
+    path: "/image-photon",
+    img: image_photon,
+  },
+  {
+    className: "four",
+    name: "BUILDER",
+    text: "Connects users with local contractors based on their location",
+    path: "/image-builder",
+    img: image_builder,
+  },
+  {
+    className: "five",
+    name: "BLOGR",
+    text: "Blogr is a platform for creating an online blog or publication",
+    path: "/image-blogr",
+    img: image_blogr,
+  },
+  {
+    className: "six",
+    name: "CAMP",
+    text: "Get expert training in coding, data, design, and digital marketing",
+    path: "/image-camp",
+    img: image_camp,
+  },
+];
+
+const navigationCards = [
+  {
+    className: "two",
+    name: "APP DESIGN",
+    path: "/image-app-design",
+    btnlink: "/app-design",
+    img: app_design,
+  },
+  {
+    className: "three",
+    name: "GRAPHIC DESIGN",
+    path: "/image-graphic-design",
+    btnlink: "/graphic-design",
+    img: graphic_design,
+  },
+];
+---
+
+<Layout>
+  <Navigation />
+
+  <PageHero>
+    <h2 slot="header">Web Design</h2>
+    <p slot="text">
+      We build websites that serve as powerful marketing tools and bring
+      memorable brand experiences.
+    </p>
+  </PageHero>
+
+  <div class="project-cards">
+    {
+      projectCards.map((i) => (
+        <ProjectCard
+          class={i.className}
+          title={i.name}
+          text={i.text}
+          imageUrl={i.path}
+          img={i.img.src}
+        />
+      ))
+    }
+  </div>
+
+  <div class="navigation-cards">
+    {
+      navigationCards.map((i) => (
+        <NavigationCard
+          class={i.className}
+          title={i.name}
+          imageUrl={i.path}
+          img={i.img.src}
+          buttonUrl={i.btnlink}
+        />
+      ))
+    }
+  </div>
+
+  <GetInTouch><a href="/contact"><Button>GET IN TOUCH</Button></a></GetInTouch>
+  <Footer />
+</Layout>
+<style>
+  body {
+    background-color: white;
+    /* padding-top: 300px; */
+    display: flex;
+    /* min-height: 300vh; */
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%; 
+
+    background-image: url(./src/assets/shared/desktop/bg-pattern-leaf.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  body #page {
+    padding-top: 300px;
+  }
+  /* navigation cards */
+
+  .navigation-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 250px;
+    width: 90%;
+  }
+
+  .one,
+  .two,
+  .three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .one h3,
+  .two h3,
+  .three h3 {
+    letter-spacing: 0.5rem;
+  }
+
+  /* cards */
+
+  .first-card,
+  .second-card,
+  .third-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* project cards */
+  .project-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .navigation-cards {
+      width: 95%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .navigation-cards {
+      width: 80%;
+      display: grid;
+      justify-content: normal;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .project-cards {
+      width: 80%;
+      margin: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 2%;
+    }
+  }
+</style>

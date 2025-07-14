@@ -1,0 +1,73 @@
+---
+import Button from "../components/Button.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
+import LocationCard from "../components/LocationCard.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Layout.astro";
+
+import illustration_australia from "/src/assets/shared/desktop/illustration-australia.svg";
+// import australiaImg from "/src/assets/shared/desktop/illustration-australia.svg";
+import illustration_canada from "/src/assets/shared/desktop/illustration-canada.svg";
+import illustration_united_kingdom from "/src/assets/shared/desktop/illustration-united-kingdom.svg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const locationCards = [
+  {
+    className: "first-card",
+    img: illustration_canada,
+    name: "CANADA",
+    path: "/illustration-canada",
+  },
+  {
+    className: "second-card",
+    img: illustration_australia,
+    name: "AUSTRALIA",
+    path: "/illustration-australia",
+  },
+  {
+    className: "third-card",
+    img: illustration_united_kingdom,
+    name: "UNITED KINGDOM",
+    path: "/image-united-kingdom",
+  },
+] as const;
+---
+
+<Layout>
+  <Navigation />
+  <ContactForm>
+    <Button>SUBMIT</Button>
+  </ContactForm>
+  <div class="location-cards">
+    {
+      locationCards.map((i) => (
+        <LocationCard class={i.className} img={i.img.src} title={i.name}>
+          <Button secondary={true}>SEE LOCATION</Button>
+        </LocationCard>
+      ))
+    }
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .location-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+  }
+  @media (min-width: 900px) {
+    .location-cards {
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+</style>

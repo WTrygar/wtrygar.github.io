@@ -1,0 +1,201 @@
+---
+import cssVars from "../styles/css-vars";
+
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import Navigation from "../components/Navigation.astro";
+import NavigationCard from "../components/NavigationCard.astro";
+import PageHero from "../components/PageHero.astro";
+import Layout from "../layouts/Layout.astro";
+
+// navigation cards images import
+import app_design from "/src/assets/home/desktop/image-app-design.jpg";
+import web_design from "/src/assets/home/desktop/image-web-design-large.jpg";
+
+// project card images imports
+import ProjectCard from "../components/ProjectCard.astro";
+import image_boxed_water from "/src/assets/graphic-design/desktop/image-boxed-water.jpg";
+import image_change from "/src/assets/graphic-design/desktop/image-change.jpg";
+import image_science from "/src/assets/graphic-design/desktop/image-science.jpg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const projectCards = [
+  {
+    className: "one",
+    name: "TIM BROWN",
+    text: "A book cover designed for Tim Brown’s new release, ‘Change’",
+    path: "/image-change",
+    img: image_change,
+  },
+  {
+    className: "two",
+    name: "BOXED WATER",
+    text: "A simple packaging concept made for Boxed Water",
+    path: "/image-boxed-water",
+    img: image_boxed_water,
+  },
+  {
+    className: "three",
+    name: "SCIENCE!",
+    text: "A poster made in collaboration with the Federal Art Project",
+    path: "/image-science",
+    img: image_science,
+  },
+];
+
+const navigationCards = [
+  {
+    className: "one",
+    name: "APP DESIGN",
+    path: "/image-app-design",
+    btnlink: "/app-design",
+    img: app_design,
+  },
+  {
+    className: "two",
+    name: "WEB DESIGN",
+    path: "/image-web-design",
+    btnlink: "/web-design",
+    img: web_design,
+  },
+];
+---
+
+<Layout>
+  <Navigation />
+
+  <PageHero>
+    <h2 slot="header">App Design</h2>
+    <p slot="text">
+      We build websites that serve as powerful marketing tools and bring
+      memorable brand experiences.
+    </p>
+  </PageHero>
+
+  <div class="project-cards">
+    {
+      projectCards.map((i) => (
+        <ProjectCard
+          class={i.className}
+          title={i.name}
+          text={i.text}
+          imageUrl={i.path}
+          img={i.img.src}
+        />
+      ))
+    }
+  </div>
+
+  <div class="navigation-cards">
+    {
+      navigationCards.map((i) => (
+        <NavigationCard
+          class={i.className}
+          title={i.name}
+          imageUrl={i.path}
+          img={i.img.src}
+          buttonUrl={i.btnlink}
+        />
+      ))
+    }
+  </div>
+
+  <GetInTouch><a href="/contact"><Button>GET IN TOUCH</Button></a></GetInTouch>
+  <Footer />
+</Layout>
+<style define:vars={{ cssVars }}>
+  body {
+    background-color: white;
+    /* padding-top: 300px; */
+    display: flex;
+    /* min-height: 300vh; */
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+
+    background-image: url(./src/assets/shared/desktop/bg-pattern-leaf.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  body #page {
+    padding-top: 300px;
+  }
+  /* navigation cards */
+
+  .navigation-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 250px;
+  }
+
+  .one,
+  .two,
+  .three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* cards */
+
+  .first-card,
+  .second-card,
+  .third-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* project cards */
+  .project-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .navigation-cards {
+      width: 95%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .navigation-cards {
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: normal;
+      gap: 30px;
+    }
+
+    /* .navigation-cards .one {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      height: 130px;
+    } */
+
+    .project-cards {
+      width: 80%;
+      margin: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 2%;
+    }
+  }
+</style>

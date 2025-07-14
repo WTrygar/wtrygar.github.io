@@ -1,0 +1,39 @@
+---
+import cssVars from "../styles/css-vars";
+---
+
+<div class="page-hero">
+  <slot name="header" />
+  <slot name="text" />
+</div>
+
+<style define:vars={cssVars}>
+  .page-hero {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url(./src/assets/shared/desktop/bg-pattern-small-circle.svg);
+    background-size: cover;
+    background-color: var(--colorPeach);
+    color: var(--colorWhite);
+    padding: 70px;
+  }
+  @media (min-width: 600px) and (max-width: 900px) {
+    .page-hero {
+      width: 90%;
+      border-radius: 25px;
+      padding: 30px 100px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .page-hero {
+      width: 80%;
+      border-radius: 25px;
+      padding: 30px 190px;
+    }
+  }
+</style>

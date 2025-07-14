@@ -1,0 +1,181 @@
+---
+import cssVars from "../styles/css-vars";
+
+interface Props {
+  secondary?: boolean;
+  tertiary?: boolean;
+}
+
+const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
+---
+
+<div class:list={["map", { secondary: isSecondary, tertiary: isTertiary }]}>
+  <div class="map-image"></div>
+  <div class="map-text">
+    <slot name="map-header" />
+    <div class="map-address-contact">
+      <slot name="map-address" />
+      <slot name="map-contact" />
+    </div>
+  </div>
+</div>
+
+<style define:vars={cssVars}>
+  /* default */
+  .map {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--colorBlack);
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+  .map .map-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 100px;
+    background-color: #fdf3f0;
+    width: 100%;
+  }
+
+  .map .map-image {
+    background-image: url("./src/assets/locations/desktop/image-map-canada.png");
+    background-size: cover;
+    height: 30rem;
+    width: 100%;
+  }
+
+  /* secondary */
+  .secondary {
+    /* flex-direction: column-reverse; */
+  }
+  .secondary .map-image {
+    background-image: url("./src/assets/locations/desktop/image-map-australia.png");
+  }
+
+  /* tertiary */
+  .tertiary {
+  }
+
+  .tertiary .map-image {
+    background-image: url("./src/assets/locations/desktop/image-map-united-kingdom.png");
+  }
+  @media (min-width: 600px) and (max-width: 900px) {
+    /* default */
+    .map {
+      width: 90%;
+      margin: 50px 0;
+    }
+
+    .map .map-text {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px 100px;
+      height: 23rem;
+      margin: auto;
+      border-radius: 25px;
+    }
+
+    .map .map-text .map-address-contact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+    }
+
+    .map .map-image {
+      background-image: url("./src/assets/locations/tablet/image-map-canada.png");
+      background-size: cover;
+      height: 23rem;
+      width: 100%;
+      margin-bottom: 25px;
+      border-radius: 25px;
+    }
+
+    /* secondary */
+    .secondary .map-image {
+      background-image: url("./src/assets/locations/tablet/image-map-australia.png");
+    }
+
+    /* tertiary */
+    .tertiary .map-image {
+      background-image: url("./src/assets/locations/tablet/image-map-uk.png");
+    }
+  }
+
+  @media (min-width: 900px) {
+    /* default */
+
+    .map {
+      flex-direction: row-reverse;
+      justify-content: center;
+      width: 80%;
+      margin: 50px 0;
+      gap: 2%;
+
+      position: relative;
+      transition: transform 0.3s ease;
+      transform: translateX(-20px);
+    }
+
+    .map:hover {
+      transform: translateX(0px);
+    }
+
+    .map .map-text {
+      text-align: left;
+      width: 64%;
+      height: 30rem;
+      border-radius: 25px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      padding: 5% 0 5% 8%;
+    }
+
+    .map .map-text .map-address-contact {
+      display: flex;
+      justify-content: flex-start;
+      gap: 100px;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+    }
+    .map .map-image {
+      background-size: cover;
+      height: 30rem;
+      min-width: 300px;
+      width: 34%;
+      border-radius: 25px;
+    }
+
+    /* secondary */
+    .secondary {
+      flex-direction: row;
+
+      position: relative;
+      transition: transform 0.3s ease;
+      transform: translateX(20px);
+    }
+
+    .map:hover {
+      transform: translateX(0px);
+    }
+
+    .secondary .map-image {
+    }
+
+    /* tertiary */
+    .tertiary .map-image {
+    }
+  }
+</style>

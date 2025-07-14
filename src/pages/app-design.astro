@@ -1,0 +1,209 @@
+---
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import Navigation from "../components/Navigation.astro";
+import NavigationCard from "../components/NavigationCard.astro";
+import PageHero from "../components/PageHero.astro";
+import Layout from "../layouts/Layout.astro";
+
+// navigation cards images import
+import graphic_design from "/src/assets/home/desktop/image-graphic-design.jpg";
+import web_design from "/src/assets/home/desktop/image-web-design-large.jpg";
+
+// project card images imports
+import ProjectCard from "../components/ProjectCard.astro";
+import image_airfilter from "/src/assets/app-design/desktop/image-airfilter.jpg";
+import image_eyecam from "/src/assets/app-design/desktop/image-eyecam.jpg";
+import image_faceit from "/src/assets/app-design/desktop/image-faceit.jpg";
+import image_loopstudios from "/src/assets/app-design/desktop/image-loopstudios.jpg";
+import image_todo from "/src/assets/app-design/desktop/image-todo.jpg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const projectCards = [
+  {
+    className: "one",
+    name: "AIRFILTER",
+    text: "Solving the problem of poor indoor air quality by filtering the air",
+    path: "/image-airfilter",
+    img: image_airfilter,
+  },
+  {
+    className: "two",
+    name: "EYECAM",
+    text: "Product that lets you edit your favorite photos and videos at any time",
+    path: "/image-eyecam",
+    img: image_eyecam,
+  },
+  {
+    className: "three",
+    name: "FACEIT",
+    text: "Get to meet your favorite internet superstar with the faceit app",
+    path: "/image-faceit",
+    img: image_faceit,
+  },
+  {
+    className: "four",
+    name: "TODO",
+    text: "A todo app that features cloud sync with light and dark mode",
+    path: "/image-todo",
+    img: image_todo,
+  },
+  {
+    className: "five",
+    name: "LOOPSTUDIOS",
+    text: "A VR experience app made for Loopstudios",
+    path: "/image-loopstudios",
+    img: image_loopstudios,
+  },
+];
+
+const navigationCards = [
+  {
+    className: "two",
+    name: "WEB DESIGN",
+    path: "/image-web-design",
+    btnlink: "/web-design",
+    img: web_design,
+  },
+  {
+    className: "three",
+    name: "GRAPHIC DESIGN",
+    path: "/image-graphic-design",
+    btnlink: "/graphic-design",
+    img: graphic_design,
+  },
+];
+---
+
+<Layout>
+  <Navigation />
+
+  <PageHero>
+    <h2 slot="header">App Design</h2>
+    <p slot="text">
+      We build websites that serve as powerful marketing tools and bring
+      memorable brand experiences.
+    </p>
+  </PageHero>
+
+  <div class="project-cards">
+    {
+      projectCards.map((i) => (
+        <ProjectCard
+          class={i.className}
+          title={i.name}
+          text={i.text}
+          imageUrl={i.path}
+          img={i.img.src}
+        />
+      ))
+    }
+  </div>
+
+  <div class="navigation-cards">
+    {
+      navigationCards.map((i) => (
+        <NavigationCard
+          class={i.className}
+          title={i.name}
+          imageUrl={i.path}
+          img={i.img.src}
+          buttonUrl={i.btnlink}
+        />
+      ))
+    }
+  </div>
+
+  <GetInTouch><a href="/contact"><Button>GET IN TOUCH</Button></a></GetInTouch>
+  <Footer />
+</Layout>
+<style>
+  body {
+    background-color: white;
+    /* padding-top: 300px; */
+    display: flex;
+    /* min-height: 300vh; */
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+
+    background-image: url(./src/assets/shared/desktop/bg-pattern-leaf.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+  }
+
+  body #page {
+    padding-top: 300px;
+  }
+  /* navigation cards */
+
+  .navigation-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 250px;
+  }
+
+  .one,
+  .two,
+  .three {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* cards */
+
+  .first-card,
+  .second-card,
+  .third-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* project cards */
+  .project-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+  }
+
+  @media (min-width: 600px) and (max-width: 900px) {
+    .navigation-cards {
+      width: 95%;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .navigation-cards {
+      width: 80%;
+      display: grid;
+      justify-content: normal;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .project-cards {
+      width: 80%;
+      margin: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 2%;
+    }
+  }
+</style>

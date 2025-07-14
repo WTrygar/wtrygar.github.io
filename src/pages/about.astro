@@ -1,0 +1,137 @@
+---
+import AboutUs from "../components/AboutUs.astro";
+import Button from "../components/Button.astro";
+import Footer from "../components/Footer.astro";
+import GetInTouch from "../components/GetInTouch.astro";
+import LocationCard from "../components/LocationCard.astro";
+import Navigation from "../components/Navigation.astro";
+import Layout from "../layouts/Layout.astro";
+
+// cards images imports
+import illustration_australia from "/src/assets/shared/desktop/illustration-australia.svg";
+import illustration_canada from "/src/assets/shared/desktop/illustration-canada.svg";
+import illustration_united_kingdom from "/src/assets/shared/desktop/illustration-united-kingdom.svg";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+const LocationCards = [
+  {
+    className: "first-card",
+    img: illustration_canada,
+    name: "CANADA",
+    id: "/locations#canada",
+    path: "/illustration-canada",
+  },
+  {
+    className: "second-card",
+    img: illustration_australia,
+    name: "AUSTRALIA",
+    id: "/locations#australia",
+    path: "/illustration-australia",
+  },
+  {
+    className: "third-card",
+    img: illustration_united_kingdom,
+    name: "UNITED KINGDOM",
+    id: "/locations#uk",
+    path: "/image-united-kingdom",
+  },
+];
+---
+
+<Layout>
+  <Navigation />
+  <AboutUs>
+    <h2 slot="about-header">About Us</h2>
+    <p slot="about-paragraph">
+      Founded in 2010, we are a creative agency that produces lasting results
+      for our clients. We’ve partnered with many startups, corporations, and
+      nonprofits alike to craft designs that make real impact. We’re always
+      looking forward to creating brands, products, and digital experiences that
+      connect with our clients’ audiences.
+    </p>
+  </AboutUs>
+
+  <AboutUs secondary={true}>
+    <h2 style="color:#ffad9b" slot="about-header">World-class talent</h2>
+    <p slot="about-paragraph">
+      We are a crew of strategists, problem-solvers, and technologists. Every
+      design is thoughtfully crafted from concept to launch, ensuring success in
+      its given market. We are constantly updating our skills in a myriad of
+      platforms.<br />
+      <br />
+      Our team is multi-disciplinary and we are not merely interested in form — content
+      and meaning are just as important. We give great importance to craftsmanship,
+      service, and prompt delivery. Clients have always been impressed with our high-quality
+      outcomes that encapsulates their brand’s story and mission.
+    </p>
+  </AboutUs>
+
+  <div class="location-cards">
+    {
+      LocationCards.map((i) => (
+        <LocationCard class={i.className} img={i.img.src} title={i.name}>
+          <a href={i.id}>
+            <Button secondary={true}>SEE LOCATION</Button>
+          </a>
+        </LocationCard>
+      ))
+    }
+  </div>
+
+  <AboutUs tertiary={true}>
+    <h2 style="color:#ffad9b" slot="about-header">The real deal</h2>
+    <p slot="about-paragraph">
+      As strategic partners in our clients’ businesses, we are ready to take on
+      any challenge as our own. Solving real problems require empathy and
+      collaboration, and we strive to bring a fresh perspective to every
+      opportunity. We make design and technology more accessible and give you
+      tools to measure success.<br />
+      <br />
+      We are visual storytellers in appealing and captivating ways. By combining
+      business and marketing strategies, we inspire audiences to take action and
+      drive real results.
+    </p>
+  </AboutUs>
+  <div class="spacer"></div>
+
+  <GetInTouch><a href="/contact"><Button>GET IN TOUCH</Button></a></GetInTouch>
+  <Footer />
+</Layout>
+
+<style>
+  .spacer {
+    height: 400px;
+  }
+  p,
+  h2 {
+    width: 70%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .location-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+  @media (min-width: 600px) and (max-width: 900px) {
+    .spacer {
+      height: 300px;
+    }
+  }
+  @media (min-width: 900px) {
+    .spacer {
+      height: 300px;
+    }
+    .location-cards {
+      flex-direction: row;
+      gap: 10px;
+    }
+  }
+</style>
