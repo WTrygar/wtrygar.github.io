@@ -18,18 +18,21 @@ const locationCards = [
     className: "first-card",
     img: illustration_canada,
     name: "CANADA",
+    id: "/locations#canada",
     path: "/illustration-canada",
   },
   {
     className: "second-card",
     img: illustration_australia,
     name: "AUSTRALIA",
+    id: "/locations#australia",
     path: "/illustration-australia",
   },
   {
     className: "third-card",
     img: illustration_united_kingdom,
     name: "UNITED KINGDOM",
+    id: "/locations#uk",
     path: "/image-united-kingdom",
   },
 ] as const;
@@ -44,7 +47,9 @@ const locationCards = [
     {
       locationCards.map((i) => (
         <LocationCard class={i.className} img={i.img.src} title={i.name}>
-          <Button secondary={true}>SEE LOCATION</Button>
+          <a href={i.id}>
+            <Button secondary={true}>SEE LOCATION</Button>
+          </a>
         </LocationCard>
       ))
     }
