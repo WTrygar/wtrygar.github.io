@@ -26,7 +26,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     align-items: center;
     text-align: center;
     background-color: var(--colorPeach);
-    background-image: url(./src/assets/shared/desktop/bg-pattern-small-circle.svg);
+    background-image: url("/src/assets/shared/desktop/bg-pattern-small-circle.svg");
     background-size: cover;
     color: var(--colorWhite);
   }
@@ -41,7 +41,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
   }
 
   .about .about-image {
-    background-image: url("./src/assets/about/mobile/image-about-hero.jpg");
+    background-image: url("/src/assets/about/mobile/image-about-hero.jpg");
     background-size: cover;
     height: 25rem;
     width: 100%;
@@ -54,7 +54,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     color: var(--colorBlack);
   }
   .secondary .about-image {
-    background-image: url("./src/assets/about/mobile/image-world-class-talent.jpg");
+    background-image: url("/src/assets/about/mobile/image-world-class-talent.jpg");
   }
 
   .secondary .about-text .about-header {
@@ -68,7 +68,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
   }
 
   .tertiary .about-image {
-    background-image: url("./src/assets/about/mobile/image-real-deal.jpg");
+    background-image: url("/src/assets/about/mobile/image-real-deal.jpg");
   }
   @media (min-width: 600px) and (max-width: 900px) {
     /* default */
@@ -83,7 +83,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     }
 
     .about .about-image {
-      background-image: url("./src/assets/about/tablet/image-about-hero.jpg");
+      background-image: url("/src/assets/about/tablet/image-about-hero.jpg");
       background-size: cover;
       height: 23rem;
       width: 100%;
@@ -92,12 +92,12 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
 
     /* secondary */
     .secondary .about-image {
-      background-image: url("./src/assets/about/tablet/image-world-class-talent.jpg");
+      background-image: url("/src/assets/about/tablet/image-world-class-talent.jpg");
     }
 
     /* tertiary */
     .tertiary .about-image {
-      background-image: url("./src/assets/about/tablet/image-real-deal.jpg");
+      background-image: url("/src/assets/about/tablet/image-real-deal.jpg");
     }
   }
 
@@ -118,7 +118,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
       /* padding: 50px 100px; */
     }
     .about .about-image {
-      background-image: url("./src/assets/about/desktop/image-about-hero.jpg");
+      background-image: url("/src/assets/about/desktop/image-about-hero.jpg");
       background-size: cover;
       height: 50rem;
       min-width: 350px;
@@ -132,13 +132,13 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     }
 
     .secondary .about-image {
-      background-image: url("./src/assets/about/desktop/image-world-class-talent.jpg");
+      background-image: url("/src/assets/about/desktop/image-world-class-talent.jpg");
       border-radius: 25px 0 0 25px;
     }
 
     /* tertiary */
     .tertiary .about-image {
-      background-image: url("./src/assets/about/desktop/image-real-deal.jpg");
+      background-image: url("/src/assets/about/desktop/image-real-deal.jpg");
     }
   }
 </style>
