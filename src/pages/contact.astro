@@ -47,7 +47,7 @@ const locationCards = [
     {
       locationCards.map((i) => (
         <LocationCard class={i.className} img={i.img.src} title={i.name}>
-          <a href={i.id}>
+          <a style="text-decoration:none" href={i.id}>
             <Button secondary={true}>SEE LOCATION</Button>
           </a>
         </LocationCard>

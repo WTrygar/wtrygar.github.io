@@ -112,7 +112,14 @@ import cssVars from "../styles/css-vars";
     background-size: cover;
     width: 24px;
     height: 24px;
+    transition: transform 0.3s ease;
+    transform: scale(1);
   }
+
+  footer .footer-icons a div:hover {
+    transform: scale(1.25);
+  }
+
   footer .footer-icons a .facebook {
     background-image: url("/src/assets/shared/desktop/icon-facebook.svg");
   }
