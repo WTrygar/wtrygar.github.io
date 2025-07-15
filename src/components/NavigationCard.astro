@@ -81,6 +81,20 @@ const {
     border-radius: 15px;
   }
 
+  .one,
+  .two,
+  .three {
+    position: relative;
+    transition: transform 0.3s ease;
+    transform: scale(1);
+  }
+
+  .one:hover,
+  .two:hover,
+  .three:hover {
+    transform: scale(1.05);
+  }
+
   .one h3,
   .two h3,
   .three h3 {
@@ -131,11 +145,6 @@ const {
       background-image: url("/src/assets/home/desktop/image-graphic-design.jpg");
     }
 
-    .one,
-    .two,
-    .three {
-      margin: 0;
-    }
     .one {
       grid-row-start: 1;
       grid-row-end: 3;
