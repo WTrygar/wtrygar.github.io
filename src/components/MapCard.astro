@@ -45,7 +45,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
   }
 
   .map .map-image {
-    background-image: url("./src/assets/locations/desktop/image-map-canada.png");
+    background-image: url("/src/assets/locations/desktop/image-map-canada.png");
     background-size: cover;
     height: 30rem;
     width: 100%;
@@ -56,7 +56,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     /* flex-direction: column-reverse; */
   }
   .secondary .map-image {
-    background-image: url("./src/assets/locations/desktop/image-map-australia.png");
+    background-image: url("/src/assets/locations/desktop/image-map-australia.png");
   }
 
   /* tertiary */
@@ -64,7 +64,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
   }
 
   .tertiary .map-image {
-    background-image: url("./src/assets/locations/desktop/image-map-united-kingdom.png");
+    background-image: url("/src/assets/locations/desktop/image-map-united-kingdom.png");
   }
   @media (min-width: 600px) and (max-width: 900px) {
     /* default */
@@ -92,7 +92,7 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
     }
 
     .map .map-image {
-      background-image: url("./src/assets/locations/tablet/image-map-canada.png");
+      background-image: url("/src/assets/locations/tablet/image-map-canada.png");
       background-size: cover;
       height: 23rem;
       width: 100%;
@@ -102,12 +102,12 @@ const { secondary: isSecondary, tertiary: isTertiary } = Astro.props;
 
     /* secondary */
     .secondary .map-image {
-      background-image: url("./src/assets/locations/tablet/image-map-australia.png");
+      background-image: url("/src/assets/locations/tablet/image-map-australia.png");
     }
 
     /* tertiary */
     .tertiary .map-image {
-      background-image: url("./src/assets/locations/tablet/image-map-uk.png");
+      background-image: url("/src/assets/locations/tablet/image-map-uk.png");
     }
   }
 
